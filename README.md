@@ -32,7 +32,7 @@ Expected file name (place it in the "data" folder):
 3.Project Structure
 
 
-telco_churn_project:
+telco_churn_projectS:
 ├── Dockerfile
 ├── README.md
 ├── requirements.txt
