@@ -1,0 +1,133 @@
+Microsoft Windows [Version 10.0.26100.6584]
+(c) Microsoft Corporation. All rights reserved.
+
+(base) C:\Users\rinim>cd "C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final"
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>python train.py
+logreg AUC: 0.8359
+rf AUC: 0.8347
+
+Best model: logreg  AUC=0.8359
+Saved to models\churn_model.pkl
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>dir models
+ Volume in drive C is OS
+ Volume Serial Number is 166F-3549
+
+ Directory of C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final\models
+
+11/16/2025  09:21 PM    <DIR>          .
+11/16/2025  09:43 PM    <DIR>          ..
+11/16/2025  09:58 PM             8,650 churn_model.pkl
+               1 File(s)          8,650 bytes
+               2 Dir(s)  176,039,370,752 bytes free
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>churn_model.pkl
+'churn_model.pkl' is not recognized as an internal or external command,
+operable program or batch file.
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>notepad Dockerfile
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>docker build -t telco-churn-service .
+[+] Building 0.1s (1/1) FINISHED                                                                   docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 2B                                                                                 0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>cd
+C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>dir
+ Volume in drive C is OS
+ Volume Serial Number is 166F-3549
+
+ Directory of C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final
+
+11/16/2025  09:43 PM    <DIR>          .
+11/15/2025  10:50 PM    <DIR>          ..
+11/16/2025  09:27 PM            46,956 cmd-anaconda-prompts.txt
+11/16/2025  08:03 PM    <DIR>          data
+11/16/2025  10:00 PM               465 Dockerfile.txt
+11/15/2025  11:05 PM    <DIR>          images
+11/16/2025  09:21 PM    <DIR>          models
+11/16/2025  07:49 PM    <DIR>          notebooks
+11/16/2025  09:19 PM             1,149 predict.py
+11/16/2025  09:27 PM             1,149 predict.py.txt
+11/16/2025  07:54 PM            11,180 README.md
+11/15/2025  11:00 PM                68 requirements.txt
+11/16/2025  09:19 PM             3,077 train.py
+11/16/2025  09:27 PM             3,116 train.py.txt
+               8 File(s)         67,160 bytes
+               6 Dir(s)  176,031,100,928 bytes free
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>docker build -t telco-churn-service .
+[+] Building 0.1s (1/1) FINISHED                                                                   docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 2B                                                                                 0.0s
+ERROR: failed to build: failed to solve: failed to read dockerfile: open Dockerfile: no such file or directory
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>docker run -it --rm -p 9696:9696 telco-churn-service
+Unable to find image 'telco-churn-service:latest' locally
+docker: Error response from daemon: pull access denied for telco-churn-service, repository does not exist or may require 'docker login'
+
+Run 'docker run --help' for more information
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>docker build -t telco-churn-service .
+[+] Building 113.8s (11/11) FINISHED                                                               docker:desktop-linux
+ => [internal] load build definition from Dockerfile                                                               0.0s
+ => => transferring dockerfile: 504B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/python:3.11-slim                                                1.7s
+ => [auth] library/python:pull token for registry-1.docker.io                                                      0.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [1/5] FROM docker.io/library/python:3.11-slim@sha256:e4676722fba839e2e5cdb844a52262b43e90e56dbd55b7ad953ee361  6.2s
+ => => resolve docker.io/library/python:3.11-slim@sha256:e4676722fba839e2e5cdb844a52262b43e90e56dbd55b7ad953ee361  0.1s
+ => => sha256:f002d17b63fe84a7f8a66f20cfa63aec4f6cd2a44069f05b6296b0abfcf2a8e1 14.36MB / 14.36MB                   2.0s
+ => => sha256:d7ecded7702a5dbf6d0f79a71edc34b534d08f3051980e2c948fba72db3197fc 29.78MB / 29.78MB                   2.9s
+ => => sha256:65868b001a40155a1d3f5aa7f5a10ba02a7d55697301839dc047c9d549b670bc 248B / 248B                         0.2s
+ => => sha256:1ee9c106547f05aa380c4cdec2837c546439943d73d965a3fc49f228dc8be993 1.29MB / 1.29MB                     0.9s
+ => => extracting sha256:d7ecded7702a5dbf6d0f79a71edc34b534d08f3051980e2c948fba72db3197fc                          1.5s
+ => => extracting sha256:1ee9c106547f05aa380c4cdec2837c546439943d73d965a3fc49f228dc8be993                          0.3s
+ => => extracting sha256:f002d17b63fe84a7f8a66f20cfa63aec4f6cd2a44069f05b6296b0abfcf2a8e1                          1.2s
+ => => extracting sha256:65868b001a40155a1d3f5aa7f5a10ba02a7d55697301839dc047c9d549b670bc                          0.0s
+ => [internal] load build context                                                                                  0.2s
+ => => transferring context: 1.28MB                                                                                0.1s
+ => [2/5] WORKDIR /app                                                                                             0.4s
+ => [3/5] COPY requirements.txt .                                                                                  0.1s
+ => [4/5] RUN pip install --no-cache-dir -r requirements.txt                                                      64.0s
+ => [5/5] COPY . .                                                                                                 0.4s
+ => exporting to image                                                                                            40.7s
+ => => exporting layers                                                                                           27.0s
+ => => exporting manifest sha256:127fe338762a999ed889268e020e30762af41db55ca7986fe5156913c82aa533                  0.0s
+ => => exporting config sha256:0391d053adf227f651df69d871cf5048913ed42526d15d78396b9c84a529749b                    0.0s
+ => => exporting attestation manifest sha256:55110eeff356b30efc60091e8fb71b1397f829529bd17b814838238fe2132287      0.0s
+ => => exporting manifest list sha256:aa9a1653e8105f7948d19699f51ad7ab9ad350c1370d2bfa6c79406823ac8f20             0.0s
+ => => naming to docker.io/library/telco-churn-service:latest                                                      0.0s
+ => => unpacking to docker.io/library/telco-churn-service:latest                                                  13.5s
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>docker images
+REPOSITORY                 TAG       IMAGE ID       CREATED         SIZE
+telco-churn-service        latest    aa9a1653e810   3 minutes ago   1.15GB
+zoomcamp-app               latest    1d5f306094a1   2 weeks ago     573MB
+agrigorev/zoomcamp-model   2025      14d79fde0bbf   3 weeks ago     181MB
+
+(base) C:\Users\rinim\OneDrive\Desktop\Data_talk\Mid-term-project\Mid-term-final>docker run -it --rm -p 9696:9696 telco-churn-service
+[2025-11-17 04:15:00 +0000] [1] [INFO] Starting gunicorn 23.0.0
+[2025-11-17 04:15:00 +0000] [1] [INFO] Listening at: http://0.0.0.0:9696 (1)
+[2025-11-17 04:15:00 +0000] [1] [INFO] Using worker: sync
+[2025-11-17 04:15:01 +0000] [7] [INFO] Booting worker with pid: 7
+/usr/local/lib/python3.11/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator StandardScaler from version 1.4.2 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/usr/local/lib/python3.11/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator OneHotEncoder from version 1.4.2 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/usr/local/lib/python3.11/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator ColumnTransformer from version 1.4.2 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/usr/local/lib/python3.11/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator LogisticRegression from version 1.4.2 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
+/usr/local/lib/python3.11/site-packages/sklearn/base.py:442: InconsistentVersionWarning: Trying to unpickle estimator Pipeline from version 1.4.2 when using version 1.7.2. This might lead to breaking code or invalid results. Use at your own risk. For more info please refer to:
+https://scikit-learn.org/stable/model_persistence.html#security-maintainability-limitations
+  warnings.warn(
